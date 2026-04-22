@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENTINEL — AI Insider Threat Detection</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== LOGIN ==================== -->
+<div id="loginScreen">
+  <div class="grid-bg"></div>
+  <div class="login-wrap">
+    <div class="brand-logo">SENTINEL</div>
+    <div class="brand-sub">AI INSIDER THREAT DETECTION SYSTEM v4.2.1</div>
+    <div class="login-box">
+      <div class="login-box-title">// SECURE ACCESS PORTAL</div>
+      <div class="field-group">
+        <label>USER IDENTIFIER</label>
+        <input type="text" id="inUser" placeholder="Enter username..." autocomplete="off">
+      </div>
+      <div class="field-group">
+        <label>ACCESS CODE</label>
+        <input type="password" id="inPass" placeholder="Enter password...">
+      </div>
+      <button id="btnLogin">AUTHENTICATE</button>
+      <div id="loginErr" class="login-err">INVALID CREDENTIALS — ACCESS DENIED</div>
+      <div class="login-hint">admin / admin123 &nbsp;|&nbsp; emp1–emp10 / 123</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DASHBOARD ==================== -->
+<div id="dashboard">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-l">
+      <span class="tb-brand">SENTINEL</span>
+      <span class="tb-div"></span>
+      <span class="tb-status"><span class="dot green"></span> AI ENGINE ACTIVE</span>
+    </div>
+    <div class="topbar-r">
+      <span id="threatBadge" class="threat-badge low">THREAT: LOW</span>
+      <span id="tbUser" class="tb-user">USER</span>
+      <button id="btnLogout" class="btn-logout">LOGOUT</button>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-bar">
+    <span class="ticker-lbl">SYS FEED</span>
+    <div class="ticker-track">
+      <span class="ticker-text">
+        AI MONITORING ACTIVE — All file access events logged in real-time &nbsp;|&nbsp;
+        SENTINEL v4.2.1 — Zero-day threat detection enabled &nbsp;|&nbsp;
+        ANOMALY DETECTION MODEL: RUNNING &nbsp;|&nbsp;
+        ENCRYPTION: AES-256 — All data channels secured &nbsp;|&nbsp;
+        RISK SCORING ENABLED — Behavioral analysis online &nbsp;|&nbsp;
+        AI MONITORING ACTIVE — All file access events logged in real-time &nbsp;|&nbsp;
+        SENTINEL v4.2.1 — Zero-day threat detection enabled &nbsp;|&nbsp;
+        ANOMALY DETECTION MODEL: RUNNING &nbsp;|&nbsp;
+        ENCRYPTION: AES-256 — All data channels secured &nbsp;|&nbsp;
+        RISK SCORING ENABLED — Behavioral analysis online
+      </span>
+    </div>
+  </div>
+
+  <!-- THREE COLUMNS -->
+  <div class="main-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <div class="user-card">
+        <div class="avatar"><span id="avatarIcon">👤</span><div class="avatar-ring"></div></div>
+        <div id="uName" class="u-name">USERNAME</div>
+        <div id="uRole" class="u-role employee">EMPLOYEE</div>
+        <div class="u-stats">
+          <div class="u-stat"><div class="u-stat-val" id="sAccess">0</div><div class="u-stat-lbl">ACCESSED</div></div>
+          <div class="u-stat"><div class="u-stat-val" id="sDl">0</div><div class="u-stat-lbl">DOWNLOADS</div></div>
+        </div>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-lbl">// RISK SCORE</div>
+        <div class="risk-track"><div id="riskFill" class="risk-fill" style="width:5%"></div></div>
+        <div id="riskPct" class="risk-pct" style="color:var(--green)">5%</div>
+        <div id="riskLbl" class="risk-status">NOMINAL</div>
+      </div>
+
+      <div class="nav-sec-lbl"><span>🗂</span> NAVIGATION</div>
+      <div class="nav-menu">
+        <div class="nav-item active" data-v="files">   <span>📁</span> File System</div>
+        <div class="nav-item"        data-v="activity"><span>📊</span> Activity Log</div>
+        <div class="nav-item"        data-v="alerts">  <span>🚨</span> Alerts</div>
+        <div class="nav-item"        data-v="chat">    <span>🤖</span> AI Assistant</div>
+      </div>
+
+    </div>
+
+    <!-- CENTER COLUMN -->
+    <div class="col-center">
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-ico">🔍</div><div id="sc1" class="stat-n">0</div><div class="stat-l">TOTAL EVENTS</div></div>
+        <div class="stat-card"><div class="stat-ico">⚠️</div><div id="sc2" class="stat-n" style="color:var(--orange)">0</div><div class="stat-l">ALERTS</div></div>
+        <div class="stat-card"><div class="stat-ico">💾</div><div id="sc3" class="stat-n" style="color:var(--yellow)">0</div><div class="stat-l">DOWNLOADS</div></div>
+        <div class="stat-card"><div class="stat-ico">👥</div><div id="sc4" class="stat-n" style="color:var(--green)">1</div><div class="stat-l">ACTIVE USERS</div></div>
+      </div>
+
+      <!-- VIEW FILES -->
+      <div id="vFiles" class="view">
+        <div class="sec-hdr"><span>📂</span><span class="sec-title">FILE SYSTEM</span><span class="sec-badge">6 CATEGORIES</span></div>
+        <div id="catGrid" class="cat-grid">Loading...</div>
+        <div id="fileBrowser" class="file-browser" style="display:none">
+          <div class="fb-header">
+            <span id="fbTitle" class="fb-title">CATEGORY</span>
+            <button id="fbClose" class="fb-close">X CLOSE</button>
+          </div>
+          <div id="fileList" class="file-list"></div>
+        </div>
+      </div>
+
+      <!-- VIEW ACTIVITY -->
+      <div id="vActivity" class="view" style="display:none">
+        <div class="sec-hdr"><span>📊</span><span class="sec-title">FULL ACTIVITY LOG</span><span id="actCount" class="sec-badge">0 EVENTS</span></div>
+        <div id="fullLog" class="full-log"></div>
+        <div id="actRestrict" class="restrict-box" style="display:none"><p>MONITORING DATA RESTRICTED — ADMIN CLEARANCE REQUIRED</p></div>
+      </div>
+
+      <!-- VIEW ALERTS -->
+      <div id="vAlerts" class="view" style="display:none">
+        <div class="sec-hdr"><span>🚨</span><span class="sec-title">SECURITY ALERTS</span><span id="alCount" class="sec-badge">0 ALERTS</span></div>
+        <div id="fullAlerts" class="full-alerts"></div>
+        <div id="alRestrict" class="restrict-box" style="display:none"><p>ALERT DATA RESTRICTED — ADMIN CLEARANCE REQUIRED</p></div>
+      </div>
+
+      <!-- VIEW CHAT -->
+      <div id="vChat" class="view" style="display:none">
+        <div class="sec-hdr"><span>🤖</span><span class="sec-title">AI SECURITY ASSISTANT</span><span class="sec-badge">ONLINE</span></div>
+        <div class="chat-box">
+          <div class="chat-hdr"><span class="dot blue pulse"></span> SENTINEL AI — QUERY INTERFACE</div>
+          <div id="chatMsgs" class="chat-msgs">
+            <div class="msg bot">SENTINEL AI online. Ask me: alerts, activity, users, threat, files, status, risk, help</div>
+          </div>
+          <div class="chat-foot">
+            <input id="chatIn" class="chat-input" placeholder="Type a query...">
+            <button id="chatSend" class="chat-send">SEND</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <div class="sec-hdr"><span>📡</span><span class="sec-title">LIVE ACTIVITY</span></div>
+      <div class="live-box">
+        <div class="live-hdr"><span>EVENT STREAM</span><span class="live-pill"><span class="dot green"></span>LIVE</span></div>
+        <div id="liveFeed" class="live-feed"></div>
+      </div>
+
+      <div id="alertPanel" style="display:none">
+        <div class="sec-hdr" style="margin-top:16px"><span>🚨</span><span class="sec-title">SECURITY ALERTS</span></div>
+        <div class="alerts-box">
+          <div class="alerts-hdr">HIGH RISK EVENTS</div>
+          <div id="alertFeed" class="alert-feed"><div class="no-data">NO ALERTS DETECTED</div></div>
+        </div>
+      </div>
+
+      <div id="usersPanel" style="display:none">
+        <div class="sec-hdr" style="margin-top:16px"><span>⭐</span><span class="sec-title">USER DIRECTORY</span></div>
+        <div class="users-box" id="usersList"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- AUTO-LOGOUT OVERLAY -->
+<div id="overlay" class="overlay">
+  <div class="ov-box">
+    <div class="ov-icon">🚨</div>
+    <div class="ov-title">SECURITY BREACH</div>
+    <div id="ovMsg" class="ov-msg">Unauthorized access to sensitive data detected.</div>
+    <div id="ovCount" class="ov-count">5</div>
+    <div class="ov-lbl">SECONDS UNTIL AUTO-LOGOUT</div>
+  </div>
+</div>
+
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
